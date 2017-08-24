@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import store from '../stores'
 
 import { newComment } from '../actions/commentActions'
 
@@ -28,7 +29,9 @@ class CommentBox extends Component {
             <button  onClick={() => this.props.newComment(this.state.text)} className="btn btn-success">comment</button>
           </div>
           <div className='col-12'>
-            <p>{ this.props.comments }</p>
+            {this.props.comments.map((comment, idx) => {
+              return <p key={idx}>{ comment }</p>
+            })}
           </div>
         </div>
       </div>
@@ -37,8 +40,9 @@ class CommentBox extends Component {
 }
 
 const mapStateToProps = (state) => {
+  console.log(`statenya `, state)
   return {
-    comments: 'aku comment rduce hardcode'
+    comments: state.comments
   }
 
 }
