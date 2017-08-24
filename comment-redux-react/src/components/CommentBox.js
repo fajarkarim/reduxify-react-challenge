@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import store from '../stores'
 
 import { newComment } from '../actions/commentActions'
 
@@ -42,7 +41,7 @@ class CommentBox extends Component {
 const mapStateToProps = (state) => {
   console.log(`statenya `, state)
   return {
-    comments: state.comments
+    comments: state.commentStore.comments
   }
 
 }
